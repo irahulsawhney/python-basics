@@ -11,6 +11,7 @@ class Solution(object):
     Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
     Return the running sum of nums.
     """
+
     def runningSum(self, nums):
         """
         :type nums: List[int]
@@ -23,6 +24,7 @@ class Solution(object):
         return answer
 
     """ https://leetcode.com/problems/richest-customer-wealth/ """
+
     def maximumWealth(self, accounts):
         """
         :type accounts: List[List[int]]
@@ -31,7 +33,7 @@ class Solution(object):
         maxWealth = 0
         for customerNumber in range(len(accounts)):
             customerWealth = 0
-            for accountNumber in range (len(accounts[customerNumber])):
+            for accountNumber in range(len(accounts[customerNumber])):
                 customerWealth += accounts[customerNumber][accountNumber]
             if customerWealth > maxWealth:
                 maxWealth = customerWealth
@@ -44,7 +46,7 @@ class Solution(object):
         """
 
         answer = []
-        for i in range(1, n+1):
+        for i in range(1, n + 1):
             answer.append("")
             if i % 3 == 0 or i % 5 == 0:
                 if i % 3 == 0:
@@ -61,7 +63,23 @@ class Solution(object):
         :param n: int
         :return: List[str]
         """
-        return  ["FizzBuzz" if number % 3==0 and number % 5 ==0 else "Fizz" if number % 3 ==0 else "Buzz" if number % 5 ==0 else str(number) for number in range(1,n+1)]
+        return [
+            "FizzBuzz" if number % 3 == 0 and number % 5 == 0 else "Fizz" if number % 3 == 0 else "Buzz" if number % 5 == 0 else str(
+                number) for number in range(1, n + 1)]
+
+    # Number of steps to count to 0, if even, halve the number, if odd, reduce by one in each step.
+    def numberOfSteps(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        if (num == 0):
+            return 0
+        if (num % 2 == 0):
+            return self.numberOfSteps(num / 2) + 1
+        else:
+            return self.numberOfSteps(num - 1) + 1
+
 
 def main():
     solution = Solution()
@@ -75,6 +93,7 @@ def main():
     print(answer)
 
     print(solution.fizzBuzz2(150))
+
 
 if __name__ == "__main__":
     main()
