@@ -72,3 +72,9 @@ print(10 != 10)  # False - because 10 isn't unequal to 10
 print(10 >= 10)  # True - because 10 is equal to 10
 print(10 <= 10)  # True - because 10 is equal to 10
 
+# Strings
+fruit = "apple"
+print(fruit == "apple")  # True - "apple" is the same as "apple"
+print(fruit != "banana") # True - "apple" is not "banana"
+print(fruit < "banana")  # True - "apple" comes before "banana" in the dictionary
+
