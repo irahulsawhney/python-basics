@@ -37,6 +37,25 @@ class Solution(object):
                 maxWealth = customerWealth
         return maxWealth
 
+    def fizzBuzz(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+
+        answer = []
+        for i in range(1, n+1):
+            answer.append("")
+            if i % 3 == 0 or i % 5 == 0:
+                if i % 3 == 0:
+                    answer[i - 1] = answer[i - 1] + "Fizz"
+                if i % 5 == 0:
+                    answer[i - 1] = answer[i - 1] + "Buzz"
+            else:
+                answer[i - 1] = str(i)
+
+        return answer
+
 def main():
     solution = Solution()
     answer = solution.sum(12, 5)
@@ -45,5 +64,7 @@ def main():
     answer2 = solution.runningSum([1, 2, 3])
     print(answer2)
 
+    answer2 = solution.fizzBuzz(2)
+    print(answer2)
 
 main()
