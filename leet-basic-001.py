@@ -156,8 +156,27 @@ class Solution(object):
             i += 1
         return returnValue
 
+    def canConstruct2(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        allChars = {}
+        for myChar in ransomNote:
+            if myChar not in allChars:
+                allChars[myChar] = 1
+            else:
+                allChars[myChar] += 1
 
-
+        found = True
+        for myChar in magazine:
+            if found is True:
+                if myChar in allChars and allChars[myChar]>0:
+                    allChars[myChar] -= 1
+                else:
+                    found = False
+        return found
 
 
 def main():
@@ -195,6 +214,11 @@ def main():
 
     print(solution.canConstruct("aa", "aa"))
 
+    print(solution.canConstruct2("aa", "aa"))
+
+    print(solution.canConstruct2("aa", "aaa"))
+
+    print(solution.canConstruct2("aaa", "aa"))
 
 if __name__ == "__main__":
     main()
