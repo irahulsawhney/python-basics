@@ -56,15 +56,25 @@ class Solution(object):
 
         return answer
 
+    def fizzBuzz2(selfself, n):
+        """
+        :param n: int
+        :return: List[str]
+        """
+        return  ["FizzBuzz" if number % 3==0 and number % 5 ==0 else "Fizz" if number % 3 ==0 else "Buzz" if number % 5 ==0 else str(number) for number in range(1,n+1)]
+
 def main():
     solution = Solution()
     answer = solution.sum(12, 5)
     print(answer)
 
-    answer2 = solution.runningSum([1, 2, 3])
-    print(answer2)
+    answer = solution.runningSum([1, 2, 3])
+    print(answer)
 
-    answer2 = solution.fizzBuzz(2)
-    print(answer2)
+    answer = solution.fizzBuzz(2)
+    print(answer)
 
-main()
+    print(solution.fizzBuzz2(150))
+
+if __name__ == "__main__":
+    main()
