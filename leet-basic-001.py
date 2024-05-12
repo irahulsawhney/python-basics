@@ -95,6 +95,38 @@ class Solution(object):
                 c = c+1
         return c
 
+    # https://leetcode.com/problems/middle-of-the-linked-list/
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        size = 0
+        current_node = head
+        while(current_node != None):
+            size = size+1
+            current_node = current_node.next
+
+        if size % 2==0:
+            skip = size/2
+        else:
+            skip = (size-1)/2
+        for i in range (0,skip):
+            head=head.next
+        return head
+
+    def middleNode(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        middle_node = head
+        while (head and head.next):
+            middle_node = middle_node.next
+            head = head.next.next
+        return middle_node
+
+
 def main():
     solution = Solution()
     answer = solution.sum(12, 5)
