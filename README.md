@@ -1,6 +1,6 @@
 # python-basics
 
-##purpose
+## purpose
 Experimenting with Python language using public examples:
 1. CodeSignal
 2. Leetcode
