@@ -126,6 +126,39 @@ class Solution(object):
             head = head.next.next
         return middle_node
 
+    # https: // leetcode.com / problems / ransom - note / description /
+    # Slow solution, using loops
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        if len(ransomNote)<1 or len(magazine)>10**5:
+            print("Error: input conditions not met", len(magazine), len(ransomNote))
+            return None
+
+        returnValue = True
+        i = 0
+        while i in range (0, len(magazine)) and returnValue is True:
+            searchChar = magazine[i]
+            found = False
+            j = 0
+            while j in range (0, len(ransomNote)) and found is False:
+                if searchChar==ransomNote[j]:
+                    x=ransomNote[:j]
+                    y=ransomNote[j+1:]
+                    ransomNote = x + y
+                    found=True
+                j += 1
+            if found is False:
+                returnValue = False
+            i += 1
+        return returnValue
+
+
+
+
 
 def main():
     solution = Solution()
@@ -142,6 +175,26 @@ def main():
 
     print(solution.numberOfSteps(150))
     print(solution.numberOfSteps2(150))
+
+    print(solution.canConstruct("cfadfeiedidcdedhhijbficadgfecjiibgdbd\
+    eigcabegifjjabefejiggacbbgfbdjhejjaddjbdhdgagigdbjcjhecfgfcjdgdgbce\
+    fgejjhicjdhhaciabhgaeiecbgcifbgcjcbiegcacbjjgbbgjbaeffahdfffiaaefcdi\
+    cbeafbgghbjeddhdbgdcdafacaiafhchfdgegecajfbefgdjcefdiefijfdjbdjiecegc\
+    adefcbhcihgibbghdifjigfahjhfdaccacicffjchijhdaehgdbaffdcjgiafdiegjaibj\
+    hbdaceddbhccgbbfibcfhcbhggjgchj", "jeibchbhacgefabbciecceiacdifigjfd\
+    gjhbagejbbbdbccjbecdhighfhhdifibjbbjcegchdfbbiffidhhcchdjececjadggbcf\
+    gdhadbegfdgcdjcabcaijjihfabaaaahghccjjehihihbhgfdhdacdhjcggbchijgcbbbe\
+    bcbbgibbdfchfdddiefifgcfebajgdbgfdeajbdcigghaidaeiaibfabcbbjbficgcaeieh\
+    igaigfaegibjhicfddjefcgffefhdijgejfjfjdggibdfehhfgjchfaejheaadeebchbh\
+    iacjcceieiiabcaaggfffdjghhjaiigjchbchgachjhgibgfeccdehadjafiheajecjiga\
+    becjgceiahcagebiabiaijcgaeddgejiiihggfgiddhabafijbhdjcfgedgcidhhacfdbeh\
+    behbajebjebcajdfccfejfgfcdabdjgajhcacdjdjdcfajcdaabbcbjjjddbihfbeccfhggj\
+    eifejfgbgaahccjaeefigdeiaadfhgeccgjfjfgegbfbjagbahhebejgffiejffdfjdefijdg\
+    ejgbbcebihhhcbiehejcgefddeeeeggdegggjccifacbjedhdgdihbbbdjeghhhjhfeibhehdj\
+    hdadbfbhcfcdjjeefcachgdgfjijebf"))
+
+    print(solution.canConstruct("aa", "aa"))
+
 
 if __name__ == "__main__":
     main()
