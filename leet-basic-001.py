@@ -22,6 +22,20 @@ class Solution(object):
             answer.append(answer[i - 1] + nums[i])
         return answer
 
+    """ https://leetcode.com/problems/richest-customer-wealth/ """
+    def maximumWealth(self, accounts):
+        """
+        :type accounts: List[List[int]]
+        :rtype: int
+        """
+        maxWealth = 0
+        for customerNumber in range(len(accounts)):
+            customerWealth = 0
+            for accountNumber in range (len(accounts[customerNumber])):
+                customerWealth += accounts[customerNumber][accountNumber]
+            if customerWealth > maxWealth:
+                maxWealth = customerWealth
+        return maxWealth
 
 def main():
     solution = Solution()
