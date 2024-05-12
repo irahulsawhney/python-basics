@@ -56,3 +56,19 @@ pharaoh = "Pharaoh Ramses II"
 # Pharaoh's Ramses II reign was from 1279 BC to 1213 BC
 reign = "1279 BC to 1213 BC"
 print(pharaoh, "ruled during", reign)
+
+"""Start with Boolean comparison operations"""
+price_of_toy = 15
+money_in_hand = 20
+
+# Compare two variables and assign the result to a new variable
+can_buy_toy = money_in_hand >= price_of_toy
+print("Can buy toy?", can_buy_toy)  # Prints: True
+
+print(10 == 100/10)  # True - because 10 is indeed equal to 10
+print(10 > 10)   # False - because 10 isn't greater than 10
+print(10 < 10)   # False - because 10 isn't less than 10
+print(10 != 10)  # False - because 10 isn't unequal to 10
+print(10 >= 10)  # True - because 10 is equal to 10
+print(10 <= 10)  # True - because 10 is equal to 10
+
