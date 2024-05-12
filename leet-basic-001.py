@@ -80,6 +80,20 @@ class Solution(object):
         else:
             return self.numberOfSteps(num - 1) + 1
 
+    def numberOfSteps2(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        c = 0
+        while num != 0:
+            if num%2 == 0:
+                num = num/2
+                c = c+1
+            else:
+                num = num-1
+                c = c+1
+        return c
 
 def main():
     solution = Solution()
@@ -94,6 +108,8 @@ def main():
 
     print(solution.fizzBuzz2(150))
 
+    print(solution.numberOfSteps(150))
+    print(solution.numberOfSteps2(150))
 
 if __name__ == "__main__":
     main()
