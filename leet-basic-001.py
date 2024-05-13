@@ -254,6 +254,21 @@ class Solution(object):
                 count += 1
         return count
 
+    def findNumbers3(self, nums):
+        count = 0
+        for i in nums:
+            if len(str(i)) % 2 == 0:
+                count += 1
+        return count
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        sortedSquares = [num*num for num in nums]
+        sortedSquares.sort()
+        return sortedSquares
+
 def main():
     solution = Solution()
     answer = solution.sum(12, 5)
@@ -302,6 +317,8 @@ def main():
     print(solution.findNumbers([120,12,4122,123,1234,12,124]))
 
     print(solution.findNumbers2([120,12,4122,123,1234,12,124]))
+
+    print(solution.findNumbers3([120, 12, 4122, 123, 1234, 12, 124]))
 
 if __name__ == "__main__":
     main()
