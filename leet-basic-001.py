@@ -1,3 +1,4 @@
+import math
 class Solution(object):
     def sum(self, num1, num2):
         """
@@ -207,6 +208,52 @@ class Solution(object):
                 answer[i][j] = self.findMax3x3(smallGrid)
         return answer
 
+    def largestLocal2(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        n = len(grid)
+        res = [[0 for j in range(n - 2)] for i in range(n - 2)]
+
+        for i in range(n - 2):
+            for j in range(n - 2):
+                # evaluation = grid[i][j: j + 3] + grid[i + 1][j: j + 3] + grid[i + 2][j: j + 3]
+                # This consitutues flattening three rows of the grid
+                res[i][j] = max(grid[i][j: j + 3] + grid[i + 1][j: j + 3] + grid[i + 2][j: j + 3])
+
+        return res
+
+    # Find numbers with even number of digits
+    def findDigits(self, num):
+        result = 0
+        while num != 0:
+            num = num // 10
+            result += 1
+        return result
+
+    def findNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        evens = 0
+        for num in nums:
+            if self.findDigits(num) % 2 == 0:
+                evens += 1
+        return evens
+
+    def findNumbers2(self, nums):
+        count = 0
+        for number in nums:
+            # while number > 0:
+            #     number = number // 10
+            #     digits += 1
+            digits = (math.log10(number) // 1) + 1
+            if digits % 2 == 0:
+                count += 1
+        return count
+
 def main():
     solution = Solution()
     answer = solution.sum(12, 5)
@@ -250,7 +297,11 @@ def main():
 
     print(solution.largestLocal([[1,1,1,1,1],[1,1,1,1,1],[1,1,2,1,1],[1,1,1,1,1],[1,1,1,1,1]]))
 
-    print(solution.largestLocal([[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]))
+    print(solution.largestLocal2([[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]))
+
+    print(solution.findNumbers([120,12,4122,123,1234,12,124]))
+
+    print(solution.findNumbers2([120,12,4122,123,1234,12,124]))
 
 if __name__ == "__main__":
     main()
