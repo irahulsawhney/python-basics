@@ -178,6 +178,34 @@ class Solution(object):
                     found = False
         return found
 
+    def findMax3x3(self,smallGrid):
+        maximum = smallGrid[0][0]
+        for i in range (0, len(smallGrid)):
+            for j in range (0, len(smallGrid[0])):
+                maximum = max(maximum, smallGrid[i][j])
+        return maximum
+
+    # https://leetcode.com/problems/largest-local-values-in-a-matrix
+    # My own try
+    def largestLocal(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        answer = []
+
+        for i in range (0, len(grid)-2):
+            answer.append([])
+            for j in range (0, len(grid[0])-2):
+                answer[i].append([])
+                smallGrid = []
+                for smallGridX in range(0, 3):
+                    smallGrid.append([])
+                    for smallGridY in range(0, 3):
+                        smallGrid[smallGridX].append([])
+                        smallGrid[smallGridX][smallGridY] = grid[i+smallGridX][j+smallGridY]
+                answer[i][j] = self.findMax3x3(smallGrid)
+        return answer
 
 def main():
     solution = Solution()
@@ -219,6 +247,10 @@ def main():
     print(solution.canConstruct2("aa", "aaa"))
 
     print(solution.canConstruct2("aaa", "aa"))
+
+    print(solution.largestLocal([[1,1,1,1,1],[1,1,1,1,1],[1,1,2,1,1],[1,1,1,1,1],[1,1,1,1,1]]))
+
+    print(solution.largestLocal([[9,9,8,1],[5,6,2,6],[8,2,6,4],[6,2,2,2]]))
 
 if __name__ == "__main__":
     main()
